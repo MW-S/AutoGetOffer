@@ -1,0 +1,2 @@
+# AutoGetOffer
+Python自动化程序，实现Boss直聘自动查找合适的Offer并发起联系
