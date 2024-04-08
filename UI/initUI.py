@@ -22,11 +22,11 @@ def startChrome():
     # 指定bat文件的路径
     bat_file_path = f'{current_directory}/addEnv.bat'
     # 使用subprocess.call启动.bat文件并传递参数
-    subprocess.call([bat_file_path])
+    os.system(bat_file_path)
     # 指定bat文件的路径
     bat_file_path = f'{current_directory}/startChromeDebug.bat'
     # 使用subprocess.call启动.bat文件并传递参数
-    subprocess.call([bat_file_path])
+    os.startfile(bat_file_path)
 
 
 def startFindOffer(ui):
