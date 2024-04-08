@@ -2,6 +2,8 @@
 import sys,  re, os, subprocess
 from PyQt5 import QtWidgets
 # 定义槽函数来打开文件夹选择对话框
+from PyQt5.QtGui import QIcon
+
 from UI.MyMainWindow import MyMainWindow
 from AutoFindWork import sendResumeByKeyword
 
@@ -17,11 +19,14 @@ def is_empty(s):
 
 def startChrome():
     current_directory = os.getcwd()
-    print(current_directory)
+    # 指定bat文件的路径
+    bat_file_path = f'{current_directory}/addEnv.bat'
+    # 使用subprocess.call启动.bat文件并传递参数
+    subprocess.call([bat_file_path])
     # 指定bat文件的路径
     bat_file_path = f'{current_directory}/startChromeDebug.bat'
-    # 执行bat文件
-    os.system(f'start cmd /k "{bat_file_path}"')
+    # 使用subprocess.call启动.bat文件并传递参数
+    subprocess.call([bat_file_path])
 
 
 def startFindOffer(ui):
@@ -44,6 +49,7 @@ def run():
         ui.setupUi(MainWindow)
         ui.pushButton.clicked.connect(startChrome)
         ui.executeButton.clicked.connect(lambda: startFindOffer(ui))
+        MainWindow.setWindowIcon(QIcon("./app.ico"))
         MainWindow.show()
         sys.exit(app.exec_())
     except Exception as e:
